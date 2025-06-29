@@ -1,6 +1,6 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import Signup from './Signup';
-import Mypage from "./Mypage.tsx";
+import Mypage from "./Mypage";
 
 function App() {
     return (
@@ -8,7 +8,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to = "/signup"/>} />
                 <Route path="/signup" element={<Signup/>} />
-                <Route path="/me" element={<Mypage/>}/>
+                <Route path="/me" element={<Mypage/>} />
 
             </Routes>
         </div>
