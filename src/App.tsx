@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import './App.css'
-import {Route,Routes} from "react-router-dom";
-import Login from './login.tsx';
-
-function App() {
-  return (
-    <div>
-        <Routes>
-            <Route path="/" element={<Login/>} />
-        </Routes>
-    </div>
-  );
-}
-
-
-export default App;
-=======
 import {Navigate, Route, Routes} from "react-router-dom";
 import Signup from './Signup';
 import Mypage from "./Mypage";
@@ -72,4 +54,3 @@ function App() {
 
 export default App
 */
->>>>>>> main
