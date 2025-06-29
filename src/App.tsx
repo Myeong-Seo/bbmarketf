@@ -1,12 +1,15 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import Signup from './Signup';
 import Mypage from "./Mypage";
+import Login from "./login";
 
 function App() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<Navigate to = "/signup"/>} />
+                {/*<Route path="/" element{<Navigate to = "/login"/>} />*/}
+                <Route path="/" element={<Login/>} />
+                <Route path="/login" element={<Login/>} />
                 <Route path="/signup" element={<Signup/>} />
                 <Route path="/me" element={<Mypage/>} />
 

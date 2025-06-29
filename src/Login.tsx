@@ -15,12 +15,8 @@ function Login(){
     //const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
    //     setUsername(e.target.value)
    // }
-
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) =>
              setForm({ ...form, [e.target.name]: e.target.value });
-
-
-
     const handleLogin = async (e : React.FormEvent) => {
             e.preventDefault();
             const response = await axios.post('http://localhost:8080/api/user/login',form);
