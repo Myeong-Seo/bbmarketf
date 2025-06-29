@@ -5,7 +5,8 @@ import {useNavigate} from "react-router-dom";
 
 export default function Mypage() {
     const [form, setForm] = useState({
-        userId: '', password: '', name: '', phoneNumber: '', address: ''});
+        userId: '', password: '', name: '', phoneNumber: '', address: '',
+         role: '', status: '', create_at: '', latest_at: '', sotial_id: ''});
     const navigate = useNavigate();
 
     const goBack = () => {
@@ -22,12 +23,16 @@ export default function Mypage() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <p></p>
-            <input name="userId" onChange={handleChange} value={form.userId}/>
+            <input name="userId" onChange={handleChange} value={form.userId} readOnly />
             <input name="password" onChange={handleChange} value={form.password}/>
-            <input name="name" onChange={handleChange} value={form.name}/>
-            <input name="phoneNumber" onChange={handleChange} value={form.phoneNumber}/>
+            <input name="name" onChange={handleChange} value={form.name} readOnly/>
+            <input name="phoneNumber" onChange={handleChange} value={form.phoneNumber} maxLength={11}/>
             <input name="address" onChange={handleChange} value={form.address}/>
+            <input name="role" onChange={handleChange} value={form.role} readOnly/>
+            <input name="status" onChange={handleChange} value={form.status} readOnly/>
+            <input name="create_at" onChange={handleChange} value={form.create_at} readOnly/>
+            <input name="latest_at" onChange={handleChange} value={form.latest_at} readOnly/>
+            <input name="social_id" onChange={handleChange} value={form.sotial_id} readOnly/>
             <div>
                 <button>완료</button>
                 <button type="button" onClick={goBack}>뒤로가기</button>
