@@ -1,28 +1,36 @@
 import {useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 function Login(){
     const [form, setForm] = useState({ email: '', password: ''});
+    const navigate = useNavigate();
 
 
-    //username = 입력된 아이디 값
-    //setUsername = 상태 업데이트 함수
-    //useState('') = 상태의 초기값을 빈 문자열로 설정
-
-    //입력값이 바뀌 때 실행되는 함수
-    //입력값을 매개변수 e로 받음. React에서 정의한 input 이벤트 타입
-    //const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-   //     setUsername(e.target.value)
-   // }
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) =>
-             setForm({ ...form, [e.target.name]: e.target.value });
-    const handleLogin = async (e : React.FormEvent) => {
-            e.preventDefault();
-            const response = await axios.post('http://localhost:8080/api/user/login',form);
-                alert(response.data);
-            console.log(response.data);
-    }
+        setForm({ ...form, [e.target.name]: e.target.value });
+
+
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8080/api/user/login', form);
+
+            // 백엔드에서 토큰을 리턴한다고 가정할 때
+            const token = response.data.token;
+
+            // 1. 로컬스토리지에 토큰 저장
+            localStorage.setItem("token", token);
+
+            alert("로그인 성공");
+            navigate("/me");
+        } catch (error: any) {
+            alert("로그인 실패: " + error.response?.data || "알 수 없는 오류");
+            console.error(error);
+        }
+    };
 
 
     return (
