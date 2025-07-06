@@ -1,6 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Login(){
@@ -9,7 +9,7 @@ function Login(){
 
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) =>
-        setForm({ ...form, [e.target.name]: e.target.value });
+             setForm({ ...form, [e.target.name]: e.target.value });
 
 
 
@@ -19,14 +19,14 @@ function Login(){
             const response = await axios.post('http://localhost:8080/api/user/login', form);
 
             // 백엔드에서 토큰을 리턴한다고 가정할 때
-            const token = response.data.token;
+            const token = response.data;
 
             // 1. 로컬스토리지에 토큰 저장
             localStorage.setItem("token", token);
 
             alert("로그인 성공");
             navigate("/me");
-        } catch (error: any) {
+        } catch (error: unknown) {
             alert("로그인 실패: " + error.response?.data || "알 수 없는 오류");
             console.error(error);
         }
