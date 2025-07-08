@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import * as React from "react";
 
 
 function Login(){
@@ -39,6 +40,9 @@ function Login(){
             <input name = "userId" type = "text" placeholder = "아이디를 입력하세요" onChange={handleChange}/>
             <input name = "password" type = "text" placeholder = "비밀번호를 입력하세요" onChange = {handleChange}/>
             <button onClick={handleLogin}>로그인</button>
+            <button type="button" onClick={() => navigate("/forgot-password")}>
+                비밀번호 찾기
+            </button>
         </div>
     )
 }
